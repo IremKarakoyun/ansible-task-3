@@ -1,0 +1,9 @@
+#Update /etc/hosts file
+- hosts: centos
+  become: yes
+  tasks:
+  - name: Append IP and name to /etc/hosts
+    lineinfile:
+      path: /etc/hosts
+      line: "{{ ansible_host }} {{ inventory_hostname }}"
+      state: present
